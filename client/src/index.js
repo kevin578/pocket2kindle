@@ -3,6 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
+import SignIn from './SignIn';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Routes = (
+<Router>
+    <div>
+        <Route exact path="/" component={SignIn}/>
+        <Route path = "/stories" component = {App}/>
+    </div>
+</Router>
+)
+
+
+ReactDOM.render(Routes, document.getElementById('root'));
 registerServiceWorker();
