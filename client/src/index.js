@@ -9,8 +9,7 @@ import SignIn from './SignIn';
 const Routes = (
 <Router>
     <div>
-        <Route exact path="/" component={SignIn}/>
-        <Route path = "/stories" component = {App}/>
+        <Route exact path="/" component={App}/>
     </div>
 </Router>
 )
