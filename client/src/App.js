@@ -35,7 +35,17 @@ class App extends Component {
   getStories = async ()=> {
     const response = await fetch('/api/getStories');
     const responseJSON = await response.json();
-    console.log(responseJSON.list);
+    let storyArray = [];
+    for (let key in responseJSON.list) {
+      const obj = responseJSON.list[key]
+      storyArray.push({
+        item_id: key,
+        title: obj.resolved_title,
+        excerpt: obj.excerpt,
+        img_url: obj.top_image_url
+      })
+  }
+  this.setState({stories: storyArray});
   }
 
   componentDidMount(){
@@ -45,7 +55,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        There will be articles
+       { this.state.stories.map((item)=> {
+         return (
+          <div>
+            <h1>{item.title}</h1>
+            <p>{item.excerpt}</p>
+            <img src = {item.img_url} />
+          </div>
+        )
+        }) }
       </div>
     );
   }
